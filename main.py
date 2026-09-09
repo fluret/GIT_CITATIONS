@@ -1,4 +1,5 @@
 import argparse
+import json
 from random import choice
 
 from pyfiglet import figlet_format
@@ -8,12 +9,11 @@ from rich.panel import Panel
 
 def charger_citations(fichier):
     with open(fichier, "r", encoding="utf-8") as f:
-        lignes = [line.strip() for line in f if line.strip()]
+        donnees = json.load(f)
+
     citations = []
-    for ligne in lignes:
-        if " - " in ligne:
-            citation, auteur = ligne.rsplit(" - ", 1)
-            citations.append((citation.strip(), auteur.strip()))
+    for item in donnees:
+        citations.append((item["text"].strip(), item["author"].strip()))
     return citations
 
 
@@ -41,7 +41,7 @@ def main():
     )
     args = parser.parse_args()
 
-    citations = charger_citations("citations.txt")
+    citations = charger_citations("citations.json")
 
     if args.all:
         for index, (citation, auteur) in enumerate(citations, start=1):
