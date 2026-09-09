@@ -1,8 +1,8 @@
 from random import choice
 
-from pyfiglet import figlet_format
 from rich import print
 from rich.panel import Panel
+from rich_pyfiglet import RichFiglet
 
 with open("citations.txt", "r", encoding="utf-8") as f:
     citations = f.readlines()
@@ -10,7 +10,13 @@ with open("citations.txt", "r", encoding="utf-8") as f:
 citations = [c.strip() for c in citations]
 citation = choice(citations)
 
-print(figlet_format("Citation du jour"))
+rich_fig = RichFiglet(
+    "Citation du jour",
+    font="ansi_shadow",
+    colors=["#ff0000", "bright_blue"],
+)
+
+print(rich_fig)
 print(
     Panel(
         f"[italic gold1]« {citation} »[/italic gold1]",

@@ -10,6 +10,7 @@ requires-python = ">=3.13"
 dependencies = [
     "pyfiglet>=1.0.4",
     "rich>=15.0.0",
+    "rich-pyfiglet>=2.0.1",
 ]
 
 [project.scripts]
