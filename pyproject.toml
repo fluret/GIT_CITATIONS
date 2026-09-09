@@ -1,0 +1,20 @@
+[project]
+name = "git-citations"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Frédéric LURET", email = "frederic.luret@univ-tours.fr" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pyfiglet>=1.0.4",
+    "rich>=15.0.0",
+]
+
+[project.scripts]
+git-citations = "git_citations:main"
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
